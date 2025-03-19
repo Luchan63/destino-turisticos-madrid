@@ -1,0 +1,35 @@
+CREATE TABLE Lugares (
+    id INT PRIMARY KEY,
+    language VARCHAR(10),
+    name VARCHAR(255),
+    email VARCHAR(255),
+    web VARCHAR(255),
+    address VARCHAR(255),
+    zipcode VARCHAR(20),
+    country VARCHAR(50),
+    latitude DECIMAL(10, 7),
+    longitude DECIMAL(10, 7),
+    subAdministrativeArea VARCHAR(50),
+    idCategoria INT
+    FOREIGN KEY (idCategoria) REFERENCES Categorias(id)
+);
+
+CREATE TABLE Multimedia (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    place_id INT,
+    type VARCHAR(50),
+    url VARCHAR(500),
+    FOREIGN KEY (place_id) REFERENCES Lugares(id)
+);
+
+CREATE TABLE Categorias (
+    idCategoria INT PRIMARY KEY,
+    Categoria VARCHAR(255)
+);
+
+CREATE TABLE Horarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    place_id INT,
+    horario TEXT,
+    FOREIGN KEY (place_id) REFERENCES Lugares(id)
+);

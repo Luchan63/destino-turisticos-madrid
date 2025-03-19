@@ -1,0 +1,11 @@
+INSERT INTO Categorias (id, Categoria) VALUES (7169, 'Empresas de guías turísticos');
+INSERT INTO Categorias (id, Categoria) VALUES (7166, 'Instalaciones deportivas');
+INSERT INTO Categorias (id, Categoria) VALUES (7168, 'Escuelas de cocina y catas de vinos y aceites');
+INSERT INTO Categorias (id, Categoria) VALUES (7170, 'Otros');
+INSERT INTO Categorias (id, Categoria) VALUES (7483, 'Espacios para eventos');
+INSERT INTO Categorias (id, Categoria) VALUES (7171, 'Parques y centros de ocio');
+INSERT INTO Categorias (id, Categoria) VALUES (7174, 'Parques y jardines');
+INSERT INTO Categorias (id, Categoria) VALUES (7175, 'Servicios');
+INSERT INTO Categorias (id, Categoria) VALUES (7173, 'Edificios y monumentos');
+INSERT INTO Categorias (id, Categoria) VALUES (7172, 'Instalaciones culturales');
+INSERT INTO Categorias (id, Categoria) VALUES (7519, 'Consignas');
