@@ -15,7 +15,7 @@ export class Places extends Model {
         relation: Model.BelongsToOneRelation,
         modelClass: Category,
         join: {
-          from: "lugares.idCategoria", // Corrección aquí
+          from: "lugares.idcategoria", // Corrección aquí
           to: "categorias.id",
         },
       },
@@ -49,34 +49,85 @@ export class Places extends Model {
     }
   }
 
-  static async getPlaceById(id) {
+  static async getPlaceById({ id }) {
     try {
-      return await Places.query().findById(id);
+      return await Places.query()
+        .findById(id)
+        .withGraphFetched("[category, multimedia, schedule]");
     } catch (error) {
       console.error("Error en getPlaceById:", error);
       throw error;
     }
   }
 
-  static async createPlace(data) {
+  static async createPlace({
+    language,
+    name,
+    email,
+    web,
+    address,
+    zipcode,
+    country,
+    latitude,
+    longitude,
+    subadministrativearea,
+    idcategory,
+  }) {
     try {
-      return await Places.query().insert(data);
+      return await Places.query().insert({
+        language,
+        name,
+        email,
+        web,
+        address,
+        zipcode,
+        country,
+        latitude,
+        longitude,
+        subadministrativearea,
+        idcategory,
+      });
     } catch (error) {
       console.error("Error en createPlace:", error);
       throw error;
     }
   }
 
-  static async updatePlace(id, data) {
+  static async updatePlace({
+    id,
+    language,
+    name,
+    email,
+    web,
+    address,
+    zipcode,
+    country,
+    latitude,
+    longitude,
+    subadministrativearea,
+    idcategory,
+  }) {
     try {
-      return await Places.query().findById(id).patch(data);
+      return await Places.query().findById(id).patch({
+        language,
+        name,
+        email,
+        web,
+        address,
+        zipcode,
+        country,
+        latitude,
+        longitude,
+        subadministrativearea,
+        idcategory,
+      });
     } catch (error) {
       console.error("Error en updatePlace:", error);
       throw error;
     }
   }
 
-  static async deletePlace(id) {
+  static async deletePlace({ id }) {
     try {
       return await Places.query().deleteById(id);
     } catch (error) {

@@ -9,11 +9,11 @@ export class Schedule extends Model {
 
   static get relationMappings() {
     return {
-      category: {
+      places: {
         relation: Model.BelongsToOneRelation,
-        modelClass: Category,
+        modelClass: Places,
         join: {
-          from: "horario.place_id",  // Corrección aquí
+          from: "horario.place_id", // Corrección aquí
           to: "lugares.id",
         },
       },
@@ -29,7 +29,7 @@ export class Schedule extends Model {
     }
   }
 
-  static async getscheduleById(id) {
+  static async getscheduleById({ id }) {
     try {
       const schedule = await Schedule.query().findById(id);
       return schedule;
@@ -47,10 +47,9 @@ export class Schedule extends Model {
     }
   }
 
-  static async updateSchedule(id, schedule) {
+  static async updateSchedule({ id, schedule }) {
     try {
-      const updateschedule = await Schedule
-        .query()
+      const updateschedule = await Schedule.query()
         .findById(id)
         .patch(schedule);
       return updateschedule;
@@ -59,7 +58,7 @@ export class Schedule extends Model {
     }
   }
 
-  static async deleteSchedule(id) {
+  static async deleteSchedule({ id }) {
     try {
       const deleteSchedule = await Schedule.query().deleteById(id);
       return deleteSchedule;

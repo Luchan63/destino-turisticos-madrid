@@ -14,7 +14,7 @@ export class Category extends Model {
         modelClass: Places,
         join: {
           from: "categorias.id",
-          to: "lugares.idCategoria",  // Corrección aquí
+          to: "lugares.idCategoria", // Corrección aquí
         },
       },
     };
@@ -22,16 +22,16 @@ export class Category extends Model {
 
   static async getAllCategories() {
     try {
-      return await Category.query().withGraphFetched("places");
+      return await Category.query();
     } catch (error) {
       console.error("Error en getAllCategories:", error);
       throw error;
     }
   }
 
-  static async getCategoryById(id) {
+  static async getCategoryById({ id }) {
     try {
-      return await Category.query().findById(id).withGraphFetched("places");
+      return await Category.query().findById(id);
     } catch (error) {
       console.error("Error en getCategoryById:", error);
       throw error;
@@ -47,7 +47,8 @@ export class Category extends Model {
     }
   }
 
-  static async updateCategory(id, category) {  // Corrección del nombre
+  static async updateCategory({ id, category }) {
+    // Corrección del nombre
     try {
       return await Category.query().findById(id).patch(category);
     } catch (error) {
@@ -56,7 +57,7 @@ export class Category extends Model {
     }
   }
 
-  static async deleteCategory(id) {
+  static async deleteCategory({ id }) {
     try {
       return await Category.query().deleteById(id);
     } catch (error) {

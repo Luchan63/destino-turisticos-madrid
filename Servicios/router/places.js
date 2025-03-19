@@ -6,6 +6,9 @@ export const RouterPlacer = ({ place }) => {
   const placesController = new PlaceController({ place });
 
   router.get("/", placesController.getAllPlaces);
-
+  router.get("/:id", placesController.getPlaceById);
+  router.post("/", placesController.createPlace);
+  router.patch("/:id", placesController.updatePlace);
+  router.delete("/:id", placesController.deletePlace);
   return router;
 };

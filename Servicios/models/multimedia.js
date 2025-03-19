@@ -29,7 +29,7 @@ export class Multimedia extends Model {
     }
   }
 
-  static async getMultimediaById(id) {
+  static async getMultimediaById({ id }) {
     try {
       const multimedia = await Multimedia.query().findById(id);
       return multimedia;
@@ -47,7 +47,7 @@ export class Multimedia extends Model {
     }
   }
 
-  static async updateMultimedia(id, multimedia) {
+  static async updateMultimedia({ id, multimedia }) {
     try {
       const updateMultimedia = await Multimedia.query()
         .findById(id)
@@ -58,7 +58,7 @@ export class Multimedia extends Model {
     }
   }
 
-  static async deleteMultimedia(id) {
+  static async deleteMultimedia({ id }) {
     try {
       const deleteMutimedia = await Multimedia.query().deleteById(id);
       return deleteMutimedia;
